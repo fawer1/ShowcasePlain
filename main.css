@@ -211,6 +211,8 @@ body main #works-section #marquee {
   background-color: var(--primary-color);
   color: var(--text-color);
   border: none;
+  line-height: 2em;
+  font-size: 1.2rem;
 }
 
 #competencies-section .accordion-item:nth-child(1) {
