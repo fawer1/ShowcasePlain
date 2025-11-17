@@ -82,8 +82,8 @@ body main #competencies-section::after {
 }
 
 /* Add spacing except for last section */
-body main section:not(:nth-child(5)) {
-  margin-bottom: 3rem;
+body main section:not(:nth-child(4)) {
+  margin-bottom: 2rem;
 }
 
 /* ===================================== */
@@ -95,6 +95,7 @@ body main #hero-section {
   justify-content: end;
   align-items: center;
   gap: 3rem;
+  padding: 0 2em;
 }
 
 #hero-text {
@@ -189,6 +190,8 @@ body main #works-section #marquee {
   flex: 3; /* 60% width portion */
   display: flex;
   flex-direction: column;
+  /* margin-top: 15%; */
+  justify-content: center;
 }
 
 #competencies-section .accordion-header {
