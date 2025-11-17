@@ -1,3 +1,6 @@
+/* ===================================== */
+/* Global Reset & Base */
+/* ===================================== */
 * {
   margin: 0;
   padding: 0;
@@ -24,18 +27,23 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Engravers MT";
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
 body main a {
   color: var(--text-color);
 }
 
-main section {
+main section:not(:second-child) {
   padding: 0 1.5rem;
 }
 
-/* ********************* */
-/* HEADER */
-/* ********************* */
-
+/* ===================================== */
+/* Header / Navigation */
+/* ===================================== */
 header nav {
   position: absolute;
   display: flex;
@@ -53,30 +61,34 @@ header nav #links {
   gap: 2rem;
 }
 
-/* ********************* */
-/* BODY */
-/* ********************* */
-
-body {
-  font-family: "Engravers MT";
-  background-color: var(--primary-color);
-  color: var(--text-color);
-}
-
+/* ===================================== */
+/* Layout / Section Wrappers */
+/* ===================================== */
 body main section {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-body main section:not(:nth-child(2)) {
+/* All sections except the first content section */
+body main #hero-section,
+body main #works-section,
+body main #contact-section {
   border-top: #b7fd79 1px solid;
 }
 
+body main #competencies-section::after {
+  border-top: #b7fd79 1px solid;
+}
+
+/* Add spacing except for last section */
 body main section:not(:nth-child(5)) {
   margin-bottom: 3rem;
 }
 
+/* ===================================== */
+/* Hero Section */
+/* ===================================== */
 body main #hero-section {
   display: flex;
   flex-direction: column;
@@ -113,29 +125,135 @@ body main #hero-section {
   text-align: end;
 }
 
+/* ===================================== */
+/* Works Section / Marquee */
+/* ===================================== */
+body main #works-section {
+  overflow: hidden;
+}
+
+/* Base marquee styling */
 body main #works-section #marquee {
   display: flex;
   flex-direction: row;
   width: 100%;
-  overflow: hidden;
   gap: 6rem;
   font-size: 2em;
   padding-top: 2rem;
 }
 
-body main #works-section {
-  overflow: hidden;
-}
-
+/* Animated marquee override */
 body main #works-section #marquee {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
+  gap: 5rem;
   width: max-content;
   will-change: transform;
   animation: marquee-left var(--marquee-duration, 30s) linear infinite;
 }
 
+#works-section .projects {
+  height: 50%;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background-color: black;
+  gap: 5em;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+/* #works-section .projects a:nth-child(2) {
+  background-color: red;
+} */
+
+/* ===================================== */
+/* Competencies Section (accordion comes from Bootstrap) */
+/* ===================================== */
+/* (Additional custom styles can be added here later) */
+
+#competencies-section .competencies-title {
+  font-size: 6rem;
+}
+
+#competencies-section {
+  display: flex;
+  flex-direction: row;
+}
+
+#competencies-section #whitespace {
+  flex: 2; /* 40% width portion */
+}
+
+#competencies-section #competencies-content {
+  flex: 3; /* 60% width portion */
+  display: flex;
+  flex-direction: column;
+}
+
+#competencies-section .accordion-header {
+  border: none;
+}
+
+#competencies-section .accordion-button {
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+#competencies-section .accordion-button:focus {
+  box-shadow: none;
+}
+
+#competencies-section .accordion-item {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+}
+
+#competencies-section .accordion-item:nth-child(1) {
+  border-top: #b7fd79 1px solid;
+  border-bottom: #b7fd79 1px solid;
+}
+
+#competencies-section .accordion-item:nth-child(2),
+#competencies-section .accordion-item:nth-child(3),
+#competencies-section .accordion-item:nth-child(4) {
+  border-bottom: #b7fd79 1px solid;
+}
+
+#competencies-section .accordion-item .accordion-button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Replace accordion chevron with 'ㅅ' symbol */
+#competencies-section .accordion-button::after {
+  background-image: none !important;
+  content: "ㅅ";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--text-color);
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+#competencies-section .accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+/* ===================================== */
+/* Contact Section */
+/* ===================================== */
+/* (Reserved for future contact form styles) */
+
+/* ===================================== */
+/* Animations */
+/* ===================================== */
 @keyframes marquee-left {
   0% {
     transform: translateX(0);
