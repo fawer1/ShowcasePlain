@@ -94,6 +94,8 @@ body main #hero-section {
   flex-direction: column;
   justify-content: end;
   align-items: center;
+  background-image: url(./assets/images/waves.svg);
+  background-size: cover;
   gap: 3rem;
   padding: 0 2em;
 }
